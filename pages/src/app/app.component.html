@@ -1,0 +1,80 @@
+<nav>
+  <ul class="pagination">
+  <li 
+    class="page-item"
+    [appClass]="{ disabled: currentPage === 0 }"
+    (click)="currentPage === 0 ? currentPage : currentPage = currentPage - 1"
+  >
+    <a class="page-link">Prev</a>
+  </li>
+  <ng-container *appTimes="images.length; let i = index">
+    <li class="page-item" 
+      [appClass]="{ active: i === currentPage}"
+      *ngIf="checkWindowIndex(i)"
+    >
+      <a (click)="currentPage = i" class="page-link" href="#">{{ i + 1 }}</a>
+    </li>
+  </ng-container>
+  <li 
+    class="page-item"
+    [appClass]="{ disabled: currentPage === images.length - 1 }"
+    (click)="currentPage === (images.length-1) ? currentPage : currentPage = currentPage + 1"
+  >
+    <a class="page-link">Next</a>
+  </li>
+  </ul>
+</nav>
+
+<div>
+  <h4>{{ images[currentPage].title }}</h4>
+  <img [src]="images[currentPage].url" />
+</div>
+
+
+
+<!-- 
+<div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">You are on Page 1.</div>
+  <div *ngSwitchCase="1">You are on Page 2.</div>
+  <div *ngSwitchCase="2">You are on Page 3.</div>
+  <div *ngSwitchCase="3">You are on Page 4.</div>
+  <div *ngSwitchCase="4">You are on Page 5.</div>
+  <div *ngSwitchCase="5">You are on Page 6.</div>
+  <div *ngSwitchCase="6">You are on Page 7.</div>
+  <div *ngSwitchCase="7">You are on Page 8.</div>
+	<div *ngSwitchDefault="7">Unknown Current Page.</div>
+</div>  -->
+
+<!-- 
+
+<nav>
+  <ul class="pagination">
+  <li 
+    class="page-item"
+    [ngClass]="{ disabled: currentPage === 0 }"
+    (click)="currentPage = currentPage - 1"
+  >
+    <a class="page-link">Prev</a>
+  </li>
+    <li class="page-item" 
+      *ngFor="let image of images; let i = index"
+      [ngClass]="{ active: i === currentPage}"
+    >
+      <a (click)="currentPage = i" class="page-link" href="#">{{ i + 1 }}</a>
+    </li>
+  <li 
+    class="page-item"
+    [ngClass]="{ disabled: currentPage === images.length - 1 }"
+    (click)="currentPage = currentPage + 1"
+  >
+    <a class="page-link">Next</a>
+  </li>
+  </ul>
+</nav>
+
+<div>
+  <h4>{{ images[currentPage].title }}</h4>
+  <img [src]="images[currentPage].url" />
+</div>
+
+ -->

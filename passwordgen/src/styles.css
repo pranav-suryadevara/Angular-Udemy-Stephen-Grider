@@ -1,0 +1,5 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing the bulma css files. The import path is written w.r.t the node_modules directory. */
+@import 'bulma/css/bulma.css';
+
